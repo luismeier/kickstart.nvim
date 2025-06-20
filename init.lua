@@ -1,5 +1,4 @@
 --[[
-
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -184,6 +183,19 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+vim.keymap.set('i', 'jj', '<ESC>', { desc = 'The escape key in insert mode' })
+
+-- tab keymaps
+vim.keymap.set('n', '<leader><tab>N', ':tabnew<cr>', { desc = 'New tab' })
+vim.keymap.set('n', '<leader><tab>n', ':tabnext<cr>', { desc = 'Next tab' })
+vim.keymap.set('n', '<leader><tab>p', ':tabprevious<cr>', { desc = 'Next tab' })
+vim.keymap.set('n', '<leader><tab><tab>', ':tabprevious<cr>', { desc = 'Switch to last tab' })
+
+-- Buffer Keymaps
+vim.keymap.set('n', '<leader>bd', ':bd<cr>', { desc = 'Delete current buffer' })
+vim.keymap.set('n', '<leader>b[', ':bprevious<cr>', { desc = 'Switch to previous buffer' })
+vim.keymap.set('n', '<leader>b]', ':bnext<cr>', { desc = 'Switch to next buffer' })
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -347,6 +359,8 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>b', group = '[B]uffers' },
+        { '<leader><Tab>', group = 'Tabs' },
       },
     },
   },
@@ -909,7 +923,7 @@ require('lazy').setup({
       -- Examples:
       --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-      --  - ci'  - [C]hange [I]nside [']quote
+      --  - ci - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
